@@ -1,9 +1,9 @@
 from flask import Flask, Response
 import json
-from corpus import Corpus
+from humandx.corpus import Corpus
 
-corpus = Corpus()
 app = Flask(__name__)
+corpus = Corpus()
 
 @app.route('/<search_keyword>')
 def getResults(search_keyword):

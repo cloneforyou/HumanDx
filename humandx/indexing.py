@@ -1,9 +1,9 @@
 def sortQueryResults(results):
 	# first sort alphabetically
-	sort_alf = sorted(results, key=lambda x: x['diagnose'])
+	results = sorted(results, key=lambda x: x['diagnose'])
 	# second sort based to matching scores
-	sort_score = sorted(sort_alf, key=lambda x: x['score'], reverse=True)
-	return sort_score
+	results = sorted(results, key=lambda x: x['score'], reverse=True)
+	return results
 
 def scoreQueryResult(query, diagnose):
 	# if score is 0 the diagnose is completely irrelevant

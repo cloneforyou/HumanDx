@@ -1,8 +1,12 @@
-from matching import sortQueryResults, scoreQueryResult
+from humandx.indexing import sortQueryResults, scoreQueryResult
 import os 
 
+DATASOURCE_FILE = "humandx/short-diagnoses.txt"
+WARNING_1_FILE_ABSENT = "Data source file '%s' does not exist"
+WARNING_2_QUERY_SHORT = "Query string should be at least 2 characters long. '%s' is only %s long"
+
 class Corpus:
-	def __init__(self, datasource_file = "short-diagnoses.txt"):
+	def __init__(self, datasource_file = DATASOURCE_FILE):
 		self.__diagnoses = []	
 		self.populate(datasource_file)
 	
@@ -12,7 +16,7 @@ class Corpus:
 			    lines_of_file = f.readlines()
 			    self.__diagnoses = [x.strip('\n') for x in lines_of_file]
 		else:
-			print("data source file '%s' does not exist" % datasource_file)
+			print(WARNING_1_FILE_ABSENT % datasource_file)
 
 	def query(self,query):
 		results = []
@@ -24,6 +28,6 @@ class Corpus:
 						'diagnose':diagnose, 
 						'score':score})
 		else:
-			print("Query string should be at least 2 characters long. '%s' is only %s long" %(query, (len(query))))
+			print(WARNING_2_QUERY_SHORT %(query, (len(query))))
 		results_sorted = sortQueryResults(results)
 		return results_sorted

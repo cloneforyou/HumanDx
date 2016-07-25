@@ -1,4 +1,4 @@
-from corpus import Corpus
+from humandx.corpus import Corpus
 
 # initialize the corpus of diagnoses
 corpus = Corpus()
