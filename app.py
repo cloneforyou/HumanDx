@@ -8,4 +8,4 @@ app = Flask(__name__)
 @app.route('/<search_keyword>')
 def getResults(search_keyword):
 	results = corpus.query(search_keyword)
-    return Response(json.dumps(results),  mimetype='application/json')
+	return Response(json.dumps(results),  mimetype='application/json')
