@@ -1,5 +1,7 @@
 from flask import Flask, Response
+import json
 from corpus import Corpus
+
 corpus = Corpus()
 app = Flask(__name__)
 
