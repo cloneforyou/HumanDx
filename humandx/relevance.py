@@ -1,7 +1,6 @@
 # calculate how relevant the diagnose is to the query
 def getRelevance(query, diagnose):
-	# if relevance is 0 the diagnose is completely irrelevant
-	# if relevance is 1 the diagnose is equal to the query
+	# if relevance is 0 the diagnose is completely irrelevant, 1 - the diagnose is equal to the query
 	relevance = 0
 	# NB: if full query match does not happen in diagnose the relevance is 0
 	if query in diagnose:

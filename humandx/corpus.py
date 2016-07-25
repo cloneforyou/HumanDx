@@ -1,4 +1,4 @@
-from humandx.indexing import getRelevance, sortResults 
+from humandx.relevance import getRelevance, sortResults 
 import os 
 
 # constant defining the path to the datasource file
