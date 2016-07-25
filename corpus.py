@@ -20,7 +20,9 @@ class Corpus:
 			for diagnose in self.__diagnoses:
 				score = scoreQueryResult(query, diagnose)
 				if (score>0):
-					results.append((diagnose, score,))
+					results.append({
+						'diagnose':diagnose, 
+						'score':score})
 		else:
 			print("Query string should be at least 2 characters long. '%s' is only %s long" %(query, (len(query))))
 		results_sorted = sortQueryResults(results)

@@ -10,4 +10,4 @@ results = corpus.query(DIAGNOSE_QUERY)
 # for every result print the diagnose title and the relevance score
 print("===============\nWe found %s results for the query '%s'" %(len(results),DIAGNOSE_QUERY))
 for result in results:
-	print("%s (%s)" %(result[0],result[1]))
+	print("%s (%s)" %(result['diagnose'],result['score']))
