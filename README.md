@@ -10,7 +10,7 @@ The first working implementation is available here: https://humandx-sample.herok
 - **Search** - the algorithm to check how relevant given diagnoses are to a query keyword
 - **UI** - the user interface to perform queries
 
-#### Implementation of conceptual blocks
+#### Current implementation of conceptual blocks
 
 - **Data Storage** - a class in Python (*humandx/corpus.py*), where the source file (short-diagnoses.txt) is parsed into a list of diagnoses (method *populate()*). This list can be queried (method *query()*) against keywords according the algorithm from Search block.
 - **Search** - a couple of functions in Python (*humandx/relevance.py*) allowing to calculate how relevant a given diagnosis (method *getRelevance()*) from the corpus is to the query keyword and to sort the query results according to the relevance score and alphabetical order (method *sortResults()*).  
@@ -22,6 +22,8 @@ The first working implementation is available here: https://humandx-sample.herok
 - the system should be later integratable into web-applications
 - while now the system should support only a list of 102 examples (short-diagnoses.txt), in future it should support complex queries based on tens of thousands of diagnoses.
 - for the first implementation doctors enter keywords without mistakes (no need to typo-tolerant search)
+- the system should be a Google for diagnoses (search-driven)
+- doctors use English to search for diagnoses without special characters
 
 #### Strategy
 The overall strategy was to design as **minimal application** (still working) as possible, still easily extensible, that **other features could be added without changing the general architecture**.
@@ -39,11 +41,13 @@ The current relevance calculation is done in the following simple way: if the qu
 - **UI** - a RESTFull API, so that the system could be easily integrated into web-applications, mobile applications etc. 
 
 ### Evaluation criteria
-
+We solve an information extraction problem. Where information -> documents -> diagnoses. For the evaluation we can use [precision and recall](https://en.wikipedia.org/wiki/Precision_and_recall):
+- Precision (ideally should be 1.0). In the current implementation we do not have False-negatives, so precision is also 1.0 (taking into account that doctor sees all the search results and not top-1 only). In future when we have thousands of diagnoses and a more complex information extraction algorithm we optimize the curve of precision and recall based on the requirements given by doctors and other stakeholders. 
+- Recall (ideally should be 1.0). As the current implementation is based on a fixed set of 102 diagnoses and assuming doctors do not make typos in their  queries the Recall is in fact 1.0.
 ### Time to accomplish
 - **Current implementation** - was done in 2.5 hours, the documentation took another 1.5.
 - **If a week is given (40 hours)** - I would dedicate: 
-  - 15 hours interviewing doctors and stakeholders to understand the priorities the system should work, 
+  - 15 hours interviewing doctors and stakeholders to understand the priorities and how the system is expected to work, 
   - 5 hours to design an architecture based on the requirements I collected from the interviews 
   - 6 hours to make a solid Data Storage
   - 14 hours to implement a more advanced Search system, prioritizing some technologies mentioned above according to the requirements from the interviews. 
