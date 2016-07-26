@@ -46,7 +46,6 @@ We solve an information extraction problem. Where information -> documents -> di
 - Recall (ideally should be 1.0). As the current implementation is based on a fixed set of 102 diagnoses and assuming doctors do not make typos in their  queries the Recall is in fact 1.0.
 
 ### Time to accomplish
-- **Current implementation** - was done in 2.5 hours, the documentation took another 1 hour.
 - **If a week is given (40 hours)** - I would dedicate: 
   - 15 hours interviewing doctors and stakeholders to understand the priorities and how the system is expected to work, 
   - 5 hours to design an architecture based on the requirements I collected from the interviews 
